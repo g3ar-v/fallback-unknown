@@ -20,6 +20,8 @@ class UnknownSkill(FallbackSkill):
         super(UnknownSkill, self).__init__()
 
     def initialize(self):
+        self.add_event('recognizer_loop:speech.recognition.unknown',
+                       self.handle_recognition_unknown)
         self.register_fallback(self.handle_fallback, 100)
 
     def read_voc_lines(self, name):
@@ -43,6 +45,9 @@ class UnknownSkill(FallbackSkill):
         self.speak_dialog('unknown')
         return True
 
+    def handle_recognition_unknown(self, message):
+        self.speak_dialog('unknown')
+        
 
 def create_skill():
     return UnknownSkill()
