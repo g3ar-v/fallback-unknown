@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from core.skills.core import FallbackSkill
+from core.skills import FallbackSkill
 
 
 class UnknownSkill(FallbackSkill):
@@ -47,7 +47,7 @@ class UnknownSkill(FallbackSkill):
 
     def handle_recognition_unknown(self, message):
         self.speak_dialog('unknown')
-        
+
 
 def create_skill():
     return UnknownSkill()
